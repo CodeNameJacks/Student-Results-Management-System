@@ -32,7 +32,6 @@ app.post('/add_student', (req, res) => {
     req.body.sin
   ]
  
-  
   db.query(sql, values, (err,result)=> {
     if(err){
       return res.json({message: "Could not add student or student already exists " + err});
@@ -45,6 +44,7 @@ app.post('/add_student', (req, res) => {
 
 
 app.post('update_student', (req, res) => {
+  
   sql = "UPDATE INTO students ('name', 'lastname', 'dob', 'email') VALUES (?)"; //inser dta into to table and binde 
   const values = [
     req.body.firstName,
@@ -52,6 +52,7 @@ app.post('update_student', (req, res) => {
     req.body.dob,
     req.body.email
   ]
+
   db.query(sql, values, (err,result)=> {
     if(err) { 
       return res.json({message: "Could not update student"});
@@ -59,17 +60,34 @@ app.post('update_student', (req, res) => {
       return res.json({success: "Student record successfully updated"});
     }
   })
+
 });
 
 app.get('/get_students', (req, res) => {
-  const sqlText = "SELECT * FROM students";
-  db.query(sqltext, (err,result) => {
+  
+  const sql = "SELECT id, firstName, lastName, dob, email FROM stumgmtdb.Students";
+  
+  db.query(sql, (err,result) => {
     if(err){
       res.json({mesage: "Error retrieving students. Please try again."});
     }else{
       return res.json(result);
     }
-  })
+
+  });
+});
+
+app.delete(`/delete/:id`, (req, res) => {
+  const sql = "DELETE FROM stumgmtdb.Students WHERE id = ?";
+  const values = [req.params.id];
+  
+  db.query(sql, values, (err,result)=> {
+    if(err) { 
+      return res.json({message: "Could not delete the student record: " + err});
+    }else {
+      return res.json({message: "Student record successfully deleted"});
+    }
+  });
 });
 
 
