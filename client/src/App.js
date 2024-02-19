@@ -9,8 +9,10 @@ import logo from './logo.svg';
 import './App.css';
 
 /* Add/Import Routes */
-import Home from './element/Home'
-import NewStudent from './element/NewStudent' //do this for the other components
+import Home from './element/Home';
+import NewStudent from './element/NewStudent'; //do this for the other components
+import StudentList from "./element/StudentList";
+import ViewStudent from "./element/ViewStudent";
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} /> 
         <Route path='/NewStudent' element={<NewStudent/>}/> 
+        <Route path='/StudentList' element={<StudentList/>}/> 
+        <Route path='/ViewStudent/:id' element={<ViewStudent/>}/> 
         
       </Routes>
     </BrowserRouter>
