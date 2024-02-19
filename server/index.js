@@ -91,17 +91,28 @@ app.delete(`/delete/:id`, (req, res) => {
 });
 
 
-app.get('/get_students_byID/:id', (req, res) => {
+app.get("/get_studentById/:id", (req, res) => {
   const id = req.params.id;
-  const sqlText = "SELECT * FROM students where `id` = ?";
-  db.query(sqltext,[id], (err,result) => {
+  console.log("VAL-1");
+  console.log(req.params.id);
+  //console.log(typeof v);
+  const sql = "SELECT * FROM stumgmtdb.Students WHERE `id`=? ";
+  const values = [id];
+  console.log("VAL");
+  console.log(values);
+  console.log(typeof values);
+  console.log("id = " + id);
+  console.log(typeof id);
+  db.query(sql, values, (err,result) => {
     if(err){
-      res.json({mesage: "Error retrieiving informtion for that student. Please try again."});
+      res.json({message: "Error retrieiving informtion for that student. Please try again." +"check id: " + id  + "ERROR: " + err});
     }else{
       return res.json(result);
     }
   })
 });
+
+
 
 
 //create api endpoint - Use this to test is api works
