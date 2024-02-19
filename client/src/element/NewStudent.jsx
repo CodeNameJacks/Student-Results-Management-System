@@ -9,7 +9,8 @@ function NewStudent() {
         lastName: "",
         sin:"",
         dob: "",
-        email: ""
+        email: "",
+        program:""
 
     })
 
@@ -55,6 +56,10 @@ function NewStudent() {
                 <div className="form-group my-3">
                     <label>Email Address: </label>
                     <input type='text' name='email' required onChange={(e) => setValues({...values, email: e.target.value})}></input>
+                </div>
+                <div className="form-group my-3">
+                    <label>Program: </label>
+                    <input type='text' name='email' required onChange={(e) => setValues({...values, program: e.target.value})}></input>
                 </div>
                 <div className='form-group my-3'>
                     <button type='submit' className='btn btn-success'>Save</button>

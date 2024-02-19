@@ -22,14 +22,15 @@ const db = mysql.createConnection({
 app.post('/add_student', (req, res) => {
   count = 0;
   const sqlFind = "COUNT (*) FROM stumgmtdb.Students where sin = ? ";
-  const sql = "INSERT INTO stumgmtdb.Students (`firstName`, `lastName`, `dob`, `email`, `sin`) VALUES (?,?,?,?,?)"; //inser dta into to table and binde 
+  const sql = "INSERT INTO stumgmtdb.Students (`firstName`, `lastName`, `dob`, `email`, `sin`, `program`) VALUES (?,?,?,?,?,?)"; //inser dta into to table and binde 
   const sinVal = [req.body.sin];
   const values = [
     req.body.firstName,
     req.body.lastName,
     req.body.dob,
     req.body.email,
-    req.body.sin
+    req.body.sin,
+    req.body.program
   ]
  
   db.query(sql, values, (err,result)=> {
@@ -65,7 +66,7 @@ app.post('update_student', (req, res) => {
 
 app.get('/get_students', (req, res) => {
   
-  const sql = "SELECT id, firstName, lastName, dob, email FROM stumgmtdb.Students";
+  const sql = "SELECT id, firstName, lastName, dob, email, program FROM stumgmtdb.Students";
   
   db.query(sql, (err,result) => {
     if(err){
