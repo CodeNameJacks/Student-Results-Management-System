@@ -29,7 +29,7 @@ function ViewStudent () {
                         <li classname="list-group-item">{student.dob}</li>
                     </ul>
                     <ul className="list-group">
-                        <li classname="list-group-item">{student.programName}</li>
+                        <li classname="list-group-item">{student.program}</li>
                     </ul> 
                     </div>                 
             )})}
