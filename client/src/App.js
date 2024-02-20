@@ -13,7 +13,7 @@ import Home from './element/Home';
 import NewStudent from './element/NewStudent'; //do this for the other components
 import StudentList from "./element/StudentList";
 import ViewStudent from "./element/ViewStudent";
-
+import Edit from "./element/Edit";
 
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
         <Route path='/NewStudent' element={<NewStudent/>}/> 
         <Route path='/StudentList' element={<StudentList/>}/> 
         <Route path='/ViewStudent/:id' element={<ViewStudent/>}/>
-       
+        <Route path='/Edit/:id' element={<Edit/>}/>  
         
       </Routes>
     </BrowserRouter>

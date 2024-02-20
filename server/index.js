@@ -43,20 +43,44 @@ app.post('/add_student', (req, res) => {
    
 });
 
+/*app.post("/edit_user/:id", (req, res) => {
+  console.log("function got called");
+  const id = req.params.id;
+  const sql =
+    "UPDATE student_details SET `firstName`=?, `lastName`=?, `dob`=?, `sin` = ?, `email`=?, `program`=? WHERE id=?";
+    const values = [
+      req.body.firstName,
+      req.body.lastName,
+      req.body.dob,
+      req.body.email,
+      req.body.sin,
+      req.body.program,
+      id
+    ];
+    db.query(sql, values, (err, result) => {
+      if (err)
+        return res.json({ message: "Something unexpected has occured" + err });
+      return res.json({ success: "Student updated successfully" });
+    });
+  });*/
 
-app.post('update_student', (req, res) => {
-  
-  sql = "UPDATE INTO students ('name', 'lastname', 'dob', 'email') VALUES (?)"; //inser dta into to table and binde 
+
+app.post("/edit_student/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "UPDATE stumgmtdb.Students SET firstName = ?, lastName = ?, dob = ?, email=?, sin = ?, program = ? WHERE id = ?"; //inser dta into to table and binde 
   const values = [
     req.body.firstName,
     req.body.lastName,
-    req.body.dob,
-    req.body.email
+    req.body.dob.substring(0,10),
+    req.body.email,
+    req.body.sin,
+    req.body.program,
+    id
   ]
 
   db.query(sql, values, (err,result)=> {
     if(err) { 
-      return res.json({message: "Could not update student"});
+      return res.json({message: "Could not update student" + err});
     }else {
       return res.json({success: "Student record successfully updated"});
     }
@@ -94,16 +118,10 @@ app.delete(`/delete/:id`, (req, res) => {
 
 app.get("/get_studentById/:id", (req, res) => {
   const id = req.params.id;
-  console.log("VAL-1");
-  console.log(req.params.id);
-  //console.log(typeof v);
+  
   const sql = "SELECT * FROM stumgmtdb.Students WHERE `id`=? ";
   const values = [id];
-  console.log("VAL");
-  console.log(values);
-  console.log(typeof values);
-  console.log("id = " + id);
-  console.log(typeof id);
+  
   db.query(sql, values, (err,result) => {
     if(err){
       res.json({message: "Error retrieiving informtion for that student. Please try again." +"check id: " + id  + "ERROR: " + err});
