@@ -86,9 +86,9 @@ app.delete(`/delete/:id`, (req, res) => {
   
   db.query(sql, values, (err,result)=> {
     if(err) { 
-      return res.json({message: "Could not delete the student record: " + err});
+      return res.json({message: "Could not delete student record: " + err});
     }else {
-      return res.json({message: "Student record successfully deleted"});
+      return res.json({message: "Student successfully deleted"});
     }
   });
 });
@@ -127,7 +127,35 @@ app.post('/add_course', (req, res) => {
       return res.json({message: "New course added successfully"});
     }
   });
-   
+});
+
+
+app.get('/get_courses', (req, res) => {
+  
+  const sql = "SELECT idCourses, courseName, courseCode FROM stumgmtdb.Courses";
+  
+  db.query(sql, (err,result) => {
+    if(err){
+      res.json({mesage: "Error retrieving students. Please try again."});
+    }else{
+      return res.json(result);
+    }
+
+  });
+});
+
+
+app.delete(`/deleteCourses/:courseCode`, (req, res) => {
+  const sql = "DELETE FROM stumgmtdb.Courses WHERE idCourses = ?";
+  const values = [req.params.courseCode];
+  
+  db.query(sql, values, (err,result)=> {
+    if(err) { 
+      return res.json({message: "Could not delete course: " + err});
+    }else {
+      return res.json({message: "Course successfully deleted"});
+    }
+  });
 });
 
 
