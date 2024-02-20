@@ -14,6 +14,7 @@ import NewStudent from './element/NewStudent'; //do this for the other component
 import StudentList from "./element/StudentList";
 import ViewStudent from "./element/ViewStudent";
 import Edit from "./element/Edit";
+import NewCourse from "./element/NewCourse";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path='/StudentList' element={<StudentList/>}/> 
         <Route path='/ViewStudent/:id' element={<ViewStudent/>}/>
         <Route path='/Edit/:id' element={<Edit/>}/>  
+        <Route path='/NewCourse' element={<NewCourse/>}/>
         
       </Routes>
     </BrowserRouter>

@@ -18,7 +18,7 @@ const db = mysql.createConnection({
   port: '14074'
 });
 
-
+/**** STUDENT APIs ****/
 app.post('/add_student', (req, res) => {
   count = 0;
   const sqlFind = "COUNT (*) FROM stumgmtdb.Students where sin = ? ";
@@ -42,28 +42,6 @@ app.post('/add_student', (req, res) => {
   });
    
 });
-
-/*app.post("/edit_user/:id", (req, res) => {
-  console.log("function got called");
-  const id = req.params.id;
-  const sql =
-    "UPDATE student_details SET `firstName`=?, `lastName`=?, `dob`=?, `sin` = ?, `email`=?, `program`=? WHERE id=?";
-    const values = [
-      req.body.firstName,
-      req.body.lastName,
-      req.body.dob,
-      req.body.email,
-      req.body.sin,
-      req.body.program,
-      id
-    ];
-    db.query(sql, values, (err, result) => {
-      if (err)
-        return res.json({ message: "Something unexpected has occured" + err });
-      return res.json({ success: "Student updated successfully" });
-    });
-  });*/
-
 
 app.post("/edit_student/:id", (req, res) => {
   const id = req.params.id;
@@ -131,7 +109,26 @@ app.get("/get_studentById/:id", (req, res) => {
   })
 });
 
-
+/**** COURSES APIs ****/
+app.post('/add_course', (req, res) => {
+  count = 0;
+  const sqlFind = "COUNT (*) FROM stumgmtdb.Courses where courseCode = ? ";
+  const sql = "INSERT INTO stumgmtdb.Courses (`courseName`, `courseCode`) VALUES (?,?)"; //inser dta into to table and binde 
+  const codeVal = [req.body.courseCode];
+  const values = [
+    req.body.courseName,
+    req.body.courseCode
+  ]
+ 
+  db.query(sql, values, (err,result)=> {
+    if(err){
+      return res.json({message: "Could not add course or course already exists " + err});
+    }else {
+      return res.json({message: "New course added successfully"});
+    }
+  });
+   
+});
 
 
 //create api endpoint - Use this to test is api works
