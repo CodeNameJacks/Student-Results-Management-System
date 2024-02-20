@@ -43,6 +43,7 @@ app.post('/add_student', (req, res) => {
    
 });
 
+
 app.post("/edit_student/:id", (req, res) => {
   const id = req.params.id;
   const sql = "UPDATE stumgmtdb.Students SET firstName = ?, lastName = ?, dob = ?, email=?, sin = ?, program = ? WHERE id = ?"; //inser dta into to table and binde 
@@ -65,6 +66,7 @@ app.post("/edit_student/:id", (req, res) => {
   })
 
 });
+
 
 app.get('/get_students', (req, res) => {
   
@@ -129,6 +131,38 @@ app.post('/add_course', (req, res) => {
   });
 });
 
+app.post('/registerInCourse', (req, res) => {
+  count = 0;
+  const sqlCode = "SELECT idCourses FROM stumgmtdb.Courses WHERE courseCode = ?"
+  const sql = "INSERT INTO stumgmtdb.Registry (`stuId`, `courId`) VALUES (?,?)"; //inser dta into to table and binde 
+  const cd = [req.body.code];
+
+  
+  const courseId = db.query(sqlCode, cd, (err,result)=> {
+    if(err){
+      return res.json({message: "Could not get course ID. " + err});
+    }else {
+      return res.json(result);
+    }
+  });
+
+  const sId = [req.body.studentId];
+  const values = [
+    sId,
+    courseId
+  ]
+
+  db.query(sql, values, (err,result)=> {
+    if(err){
+      return res.json({message: "Could not add student to the course " + err});
+    }else {
+      return res.json({message: "Student added successfully to the course"});
+    }
+  });
+   
+});
+
+
 
 app.get('/get_courses', (req, res) => {
   
@@ -158,6 +192,91 @@ app.delete(`/deleteCourses/:courseCode`, (req, res) => {
   });
 });
 
+
+app.get("/get_courseById/:id", (req, res) => {
+  const id = req.params.id;
+  
+  const sql = "SELECT * FROM stumgmtdb.Courses WHERE `idCourses`=? ";
+  const values = [id];
+  
+  db.query(sql, values, (err,result) => {
+    if(err){
+      res.json({message: "Error retrieiving information for that course. Please try again." +"check id: " + id  + "ERROR: " + err});
+    }else{
+      return res.json(result);
+    }
+  })
+});
+
+
+app.post("/edit_course/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "UPDATE stumgmtdb.Courses SET courseName = ?, courseCode = ? WHERE idCourses = ?"; //inser dta into to table and binde 
+  const values = [
+    req.body.courseName,
+    req.body.courseCode,
+    id
+  ]
+
+  db.query(sql, values, (err,result)=> {
+    if(err) { 
+      return res.json({message: "Could not update courset" + err});
+    }else {
+      return res.json({success: "Course successfully updated"});
+    }
+  })
+
+});
+
+
+app.post("/register/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "UPDATE stumgmtdb.Students SET firstName = ?, lastName = ?, dob = ?, email=?, sin = ?, program = ? WHERE id = ?"; //inser dta into to table and binde 
+  const sqlCourse = "SELECT idCourses from stumgmtdb.Courses WHERE courseCode = ?";
+  const courseVal = [req.body.code];
+  
+  const codeVal = db.query(sqlCourse, courseVal, (res, result) => {
+    if(err) { 
+      return res.json({message: "Could not get course code" + err});
+    }else {
+      return res.json(result);
+    }
+  })
+  
+  const values = [codeVal, id];   
+
+  db.query(sql, values, (err,result)=> {
+    if(err) { 
+      return res.json({message: "Could not register student" + err});
+    }else {
+      return res.json({success: "Student successfully register in course " + codeVal});
+    }
+  })
+
+});
+
+/**** GRADES APIs ****/
+app.post('/add_grade', (req, res) => {
+  count = 0;
+  //const sqlFind = "COUNT (*) FROM stumgmtdb.Courses where courseCode = ? ";
+  const sql = "INSERT INTO stumgmtdb.Grades (`studentId`, `studentFName`, `studentLName`, `courseCode`, `grade`) VALUES (?,?,?,?,?)"; //inser dta into to table and binde 
+  const codeVal = [req.body.courseCode];
+  const values = [
+    req.body.studentId,
+    req.body.studentLname,
+    req.body.studentFName,
+    req.body.courseCode,
+    req.body.grade
+  ]
+ 
+  db.query(sql, values, (err,result)=> {
+    if(err){
+      return res.json({message: "Could not add grades fror thos student. Please try again. " + err});
+    }else {
+      return res.json({message: "Student grade added successfully"});
+    }
+  });
+});
 
 //create api endpoint - Use this to test is api works
 app.get("/api", (req, res) => {

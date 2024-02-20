@@ -16,6 +16,9 @@ import ViewStudent from "./element/ViewStudent";
 import Edit from "./element/Edit";
 import NewCourse from "./element/NewCourse";
 import CourseList from "./element/CourseList";
+import EditCourse from "./element/EditCourse";
+import NewGrade from "./element/NewGrade";
+
 
 
 function App() {
@@ -38,6 +41,9 @@ function App() {
         <Route path='/Edit/:id' element={<Edit/>}/>  
         <Route path='/NewCourse' element={<NewCourse/>}/>
         <Route path='/CourseList' element={<CourseList/>}/>
+        <Route path='/EditCourse/:id' element={<EditCourse/>}/>
+        <Route path='/NewGrade' element={<NewGrade/>}/>  
+        
         
       </Routes>
     </BrowserRouter>
