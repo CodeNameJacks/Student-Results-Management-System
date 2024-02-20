@@ -15,6 +15,7 @@ import StudentList from "./element/StudentList";
 import ViewStudent from "./element/ViewStudent";
 
 
+
 function App() {
   //const [ data, setData] = useState("");  KEEP THIS FOR TESTING INITIAL BASE SETUP
   
@@ -31,7 +32,8 @@ function App() {
         <Route path='/' element={<Home/>} /> 
         <Route path='/NewStudent' element={<NewStudent/>}/> 
         <Route path='/StudentList' element={<StudentList/>}/> 
-        <Route path='/ViewStudent/:id' element={<ViewStudent/>}/> 
+        <Route path='/ViewStudent/:id' element={<ViewStudent/>}/>
+       
         
       </Routes>
     </BrowserRouter>
