@@ -18,7 +18,7 @@ import NewCourse from "./element/NewCourse";
 import CourseList from "./element/CourseList";
 import EditCourse from "./element/EditCourse";
 import NewGrade from "./element/NewGrade";
-
+import Register from "./element/Register";
 
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
         <Route path='/CourseList' element={<CourseList/>}/>
         <Route path='/EditCourse/:id' element={<EditCourse/>}/>
         <Route path='/NewGrade' element={<NewGrade/>}/>  
-        
+        <Route path='/Register' element={<Register/>}/>   
         
       </Routes>
     </BrowserRouter>

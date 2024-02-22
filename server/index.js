@@ -19,6 +19,7 @@ const db = mysql.createConnection({
 });
 
 /**** STUDENT APIs ****/
+//add student
 app.post('/add_student', (req, res) => {
   count = 0;
   const sqlFind = "COUNT (*) FROM stumgmtdb.Students where sin = ? ";
@@ -43,7 +44,7 @@ app.post('/add_student', (req, res) => {
    
 });
 
-
+//delete student
 app.post("/edit_student/:id", (req, res) => {
   const id = req.params.id;
   const sql = "UPDATE stumgmtdb.Students SET firstName = ?, lastName = ?, dob = ?, email=?, sin = ?, program = ? WHERE id = ?"; //inser dta into to table and binde 
@@ -67,7 +68,7 @@ app.post("/edit_student/:id", (req, res) => {
 
 });
 
-
+//gets students
 app.get('/get_students', (req, res) => {
   
   const sql = "SELECT id, firstName, lastName, dob, email, program FROM stumgmtdb.Students";
@@ -82,6 +83,7 @@ app.get('/get_students', (req, res) => {
   });
 });
 
+//delete student
 app.delete(`/delete/:id`, (req, res) => {
   const sql = "DELETE FROM stumgmtdb.Students WHERE id = ?";
   const values = [req.params.id];
@@ -96,6 +98,7 @@ app.delete(`/delete/:id`, (req, res) => {
 });
 
 
+//get student by id
 app.get("/get_studentById/:id", (req, res) => {
   const id = req.params.id;
   
@@ -112,6 +115,7 @@ app.get("/get_studentById/:id", (req, res) => {
 });
 
 /**** COURSES APIs ****/
+//add new course
 app.post('/add_course', (req, res) => {
   count = 0;
   const sqlFind = "COUNT (*) FROM stumgmtdb.Courses where courseCode = ? ";
@@ -131,39 +135,36 @@ app.post('/add_course', (req, res) => {
   });
 });
 
+//register for course
 app.post('/registerInCourse', (req, res) => {
-  count = 0;
-  const sqlCode = "SELECT idCourses FROM stumgmtdb.Courses WHERE courseCode = ?"
-  const sql = "INSERT INTO stumgmtdb.Registry (`stuId`, `courId`) VALUES (?,?)"; //inser dta into to table and binde 
   const cd = [req.body.code];
-
+  const sId = Number(req.body.studentId);
+  const sqlCode = "SELECT idCourses FROM stumgmtdb.Courses WHERE courseCode = ? " ;
+  const sql = "INSERT INTO stumgmtdb.Registry (stuId, courId) VALUES (?,?)"; //insert data into to table and bind 
   
-  const courseId = db.query(sqlCode, cd, (err,result)=> {
-    if(err){
-      return res.json({message: "Could not get course ID. " + err});
-    }else {
-      return res.json(result);
-    }
-  });
-
-  const sId = [req.body.studentId];
-  const values = [
-    sId,
-    courseId
-  ]
-
-  db.query(sql, values, (err,result)=> {
+  db.query(sqlCode, cd, (err,result)=> {
+    console.log("beggining program");
     if(err){
       return res.json({message: "Could not add student to the course " + err});
     }else {
-      return res.json({message: "Student added successfully to the course"});
+      let cId = Number(result[0].idCourses);
+      console.log("CID");
+      console.log(cId);
+      console.log(sId);
+      let values = [sId, cId]
+      db.query(sql, values, (err,result)=> {
+        if(err){
+          return res.json({message: "Could not add student to the course " + err});
+        }else {
+          return res.json({message: "Student added successfully to the course"});
+        }
+      })
     }
   });
-   
 });
 
 
-
+//get all courses
 app.get('/get_courses', (req, res) => {
   
   const sql = "SELECT idCourses, courseName, courseCode FROM stumgmtdb.Courses";
@@ -178,7 +179,7 @@ app.get('/get_courses', (req, res) => {
   });
 });
 
-
+//delete courses
 app.delete(`/deleteCourses/:courseCode`, (req, res) => {
   const sql = "DELETE FROM stumgmtdb.Courses WHERE idCourses = ?";
   const values = [req.params.courseCode];
@@ -208,7 +209,7 @@ app.get("/get_courseById/:id", (req, res) => {
   })
 });
 
-
+//edit course
 app.post("/edit_course/:id", (req, res) => {
   const id = req.params.id;
   const sql = "UPDATE stumgmtdb.Courses SET courseName = ?, courseCode = ? WHERE idCourses = ?"; //inser dta into to table and binde 
@@ -235,11 +236,11 @@ app.post("/register/:id", (req, res) => {
   const sqlCourse = "SELECT idCourses from stumgmtdb.Courses WHERE courseCode = ?";
   const courseVal = [req.body.code];
   
-  const codeVal = db.query(sqlCourse, courseVal, (res, result) => {
+  const codeVal = db.query(sqlCourse, courseVal, (result) => {
     if(err) { 
-      return res.json({message: "Could not get course code" + err});
+      return 
     }else {
-      return res.json(result);
+      return result;
     }
   })
   
