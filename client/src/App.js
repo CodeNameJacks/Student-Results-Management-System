@@ -19,6 +19,7 @@ import CourseList from "./element/CourseList";
 import EditCourse from "./element/EditCourse";
 import NewGrade from "./element/NewGrade";
 import Register from "./element/Register";
+import CourseHistory from "./element/CourseHistory";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path='/EditCourse/:id' element={<EditCourse/>}/>
         <Route path='/NewGrade' element={<NewGrade/>}/>  
         <Route path='/Register' element={<Register/>}/>   
+        <Route path='/CourseHistory/:id' element={<CourseHistory/>}/> 
         
       </Routes>
     </BrowserRouter>

@@ -230,30 +230,21 @@ app.post("/edit_course/:id", (req, res) => {
 });
 
 
-app.post("/register/:id", (req, res) => {
+app.get("/get_courseHistory/:id", (req, res) => {
   const id = req.params.id;
-  const sql = "UPDATE stumgmtdb.Students SET firstName = ?, lastName = ?, dob = ?, email=?, sin = ?, program = ? WHERE id = ?"; //inser dta into to table and binde 
-  const sqlCourse = "SELECT idCourses from stumgmtdb.Courses WHERE courseCode = ?";
-  const courseVal = [req.body.code];
   
-  const codeVal = db.query(sqlCourse, courseVal, (result) => {
-    if(err) { 
-      return 
-    }else {
-      return result;
+  const sql = 'SELECT c.courseName, c.courseCode FROM stumgmtdb.Courses c ' +
+    'INNER JOIN stumgmtdb.Registry r on c.idCourses = r.courId WHERE r.stuId = ?'
+  
+  const values = [id];
+  
+  db.query(sql, values, (err,result) => {
+    if(err){
+      res.json({message: "Error retrieiving student's course history. Please try again." + err});
+    }else{
+      return res.json(result);
     }
   })
-  
-  const values = [codeVal, id];   
-
-  db.query(sql, values, (err,result)=> {
-    if(err) { 
-      return res.json({message: "Could not register student" + err});
-    }else {
-      return res.json({success: "Student successfully register in course " + codeVal});
-    }
-  })
-
 });
 
 /**** GRADES APIs ****/
