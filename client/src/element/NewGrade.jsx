@@ -6,8 +6,9 @@ import {Link, useNavigate} from 'react-router-dom'
 function NewGrade() {
     const [values, setValues] = useState({
         studentId: "",
-        studentFname: "",
-        studentLname: "",
+        studentFName: "",
+        studentLName: "",
+        courseId:"",
         courseCode: "",
         grade:""
     })
@@ -36,11 +37,15 @@ function NewGrade() {
                 </div>
                 <div className="form-group my-3">
                     <label>Student Firstname</label>
-                    <input type='text' name='studentFname' required onChange={(e) => setValues({...values, studentFname: e.target.value})}></input>
+                    <input type='text' name='studentFName' required onChange={(e) => setValues({...values, studentFName: e.target.value})}></input>
                 </div>
                 <div className="form-group my-3">
                     <label>Student Lastname</label>
-                    <input type='text' name='studentLname' required onChange={(e) => setValues({...values, studentLname: e.target.value})}></input>
+                    <input type='text' name='studentLName' required onChange={(e) => setValues({...values, studentLName: e.target.value})}></input>
+                </div>
+                <div className="form-group my-3">
+                    <label>Course ID</label>
+                    <input type='text' name='courseId' required onChange={(e) => setValues({...values, courseId: e.target.value})}></input>
                 </div>
                 <div className="form-group my-3">
                     <label>Course Code</label>

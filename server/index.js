@@ -148,9 +148,7 @@ app.post('/registerInCourse', (req, res) => {
       return res.json({message: "Could not add student to the course " + err});
     }else {
       let cId = Number(result[0].idCourses);
-      console.log("CID");
-      console.log(cId);
-      console.log(sId);
+      
       let values = [sId, cId]
       db.query(sql, values, (err,result)=> {
         if(err){
@@ -209,6 +207,7 @@ app.get("/get_courseById/:id", (req, res) => {
   })
 });
 
+
 //edit course
 app.post("/edit_course/:id", (req, res) => {
   const id = req.params.id;
@@ -251,14 +250,15 @@ app.get("/get_courseHistory/:id", (req, res) => {
 app.post('/add_grade', (req, res) => {
   count = 0;
   //const sqlFind = "COUNT (*) FROM stumgmtdb.Courses where courseCode = ? ";
-  const sql = "INSERT INTO stumgmtdb.Grades (`studentId`, `studentFName`, `studentLName`, `courseCode`, `grade`) VALUES (?,?,?,?,?)"; //inser dta into to table and binde 
+  const sql = "INSERT INTO stumgmtdb.Grades (studentId, studentFName, studentLName, courseId, courseCode, grade) VALUES (?,?,?,?,?,?)"; //inser dta into to table and binde 
   const codeVal = [req.body.courseCode];
   const values = [
     req.body.studentId,
-    req.body.studentLname,
     req.body.studentFName,
+    req.body.studentLName,
+    req.body.courseId,
     req.body.courseCode,
-    req.body.grade
+    req.body.grade,
   ]
  
   db.query(sql, values, (err,result)=> {
@@ -270,6 +270,25 @@ app.post('/add_grade', (req, res) => {
   });
 });
 
+
+app.get("/get_gradesHistory/:id", (req, res) => {
+  
+  const id = req.params.id;
+  
+  const sql = "SELECT g.studentId, g.studentFName, g.studentLName, c.courseName, g.courseCode, " +
+ "g.grade FROM stumgmtdb.Grades g INNER JOIN stumgmtdb.Courses c " +
+ "on g.courseId = c.idCourses WHERE g.studentId =  ?;";
+  const values = [id];
+  
+  db.query(sql, values, (err,result) => {
+    if(err){
+      res.json({message: "Error retrieiving grades for that student. Please try again." + err});
+    }else{
+      return res.json(result);
+    }
+  })
+});
+
 //create api endpoint - Use this to test is api works
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
@@ -279,3 +298,5 @@ app.get("/api", (req, res) => {
 app.listen(PORT, () => {
       console.log('Server listening on port 3001');
 })
+
+
