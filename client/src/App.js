@@ -20,8 +20,8 @@ import EditCourse from "./element/EditCourse";
 import NewGrade from "./element/NewGrade";
 import Register from "./element/Register";
 import CourseHistory from "./element/CourseHistory";
-import GradesHistory from "./element/GradesHistory.jsx";
-
+import GradesHistory from "./element/GradesHistory";
+import GradesList from "./element/GradesList";
 function App() {
   //const [ data, setData] = useState("");  KEEP THIS FOR TESTING INITIAL BASE SETUP
   
@@ -47,6 +47,7 @@ function App() {
         <Route path='/Register' element={<Register/>}/>   
         <Route path='/CourseHistory/:id' element={<CourseHistory/>}/> 
         <Route path='/GradesHistory/:id' element={<GradesHistory/>}/> 
+        <Route path='/GradesList/:id/:courseName' element={<GradesList/>}/> 
         
         
       </Routes>

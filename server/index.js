@@ -290,7 +290,26 @@ app.get("/get_gradesHistory/:id", (req, res) => {
   })
 });
 
-//create api endpoint - Use this to test is api works
+
+app.get("/get_gradesByCourseID/:id", (req, res) => {
+
+  const id = req.params.id;
+  
+  const sql = "SELECT g.studentFName, g.studentLName, c.courseName, g.courseCode, " +
+ "g.grade, g.year FROM stumgmtdb.Grades g INNER JOIN stumgmtdb.Courses c " +
+ "on g.courseId = c.idCourses WHERE g.courseId =  ?;";
+  const values = [id];
+  
+  db.query(sql, values, (err,result) => {
+    if(err){
+      res.json({message: "Error retrieiving grades for the course. Please try again." + err});
+    }else{
+      return res.json(result);
+    }
+  })
+});
+
+//create api endpoint - Use this to test if api works
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
   });
