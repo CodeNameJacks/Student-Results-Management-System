@@ -4,7 +4,7 @@ import {Link, useParams} from 'react-router-dom';
 var pencil = require('../assets/fontAwesome/pencil.png');
 var trash = require('../assets/fontAwesome/trash-can2.png');
 var open = require('../assets/fontAwesome/folder-open2.png');
-                                    
+var list = require('../assets/fontAwesome/list.png');                                    
 
 
 
@@ -62,6 +62,7 @@ function CourseList () {
                                 <td> 
                                     <Link to={`/EditCourse/${course.idCourses}`}><img src={pencil}/></Link>
                                     <Link to={`/ViewCourse/${course.idCourses}`}><img src={open}/></Link>
+                                    <Link to={`/GradesList/${course.idCourses}`}><img src={list}/></Link>
                                     <span  onClick ={() => handleDelete(course.idCourses)}><img src = {trash}/></span>
                               </td>
                             </tr>)
