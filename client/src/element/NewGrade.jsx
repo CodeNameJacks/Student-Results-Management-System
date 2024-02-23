@@ -10,7 +10,8 @@ function NewGrade() {
         studentLName: "",
         courseId:"",
         courseCode: "",
-        grade:""
+        grade:"",
+        year: ""
     })
 
     function handleSubmit(e) {
@@ -54,6 +55,10 @@ function NewGrade() {
                 <div className="form-group my-3">
                     <label>Grade</label>
                     <input type='text' name='grade' required onChange={(e) => setValues({...values, grade: e.target.value})}></input>
+                </div>
+                <div className="form-group my-3">
+                    <label>Year</label>
+                    <input type='text' name='year' required onChange={(e) => setValues({...values, year: e.target.value})}></input>
                 </div>
                 <div className='form-group my-3'>
                     <button type='submit' className='btn btn-success'>Save</button>

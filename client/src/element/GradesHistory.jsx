@@ -25,7 +25,7 @@ function GradesHistory () {
                             <th>Course Name</th>
                             <th> Course Code</th>
                             <th>Grade</th>
-                            
+                            <th>Year Completed</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +36,7 @@ function GradesHistory () {
                                     <td>{grades.courseName}</td>
                                     <td> {grades.courseCode}</td>
                                     <td> {grades.grade}</td>
+                                    <td> {grades.year}</td>
                                 </tr>)
                             })
                         }                     

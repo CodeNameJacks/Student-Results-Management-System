@@ -259,6 +259,7 @@ app.post('/add_grade', (req, res) => {
     req.body.courseId,
     req.body.courseCode,
     req.body.grade,
+    req.body.year
   ]
  
   db.query(sql, values, (err,result)=> {
@@ -276,7 +277,7 @@ app.get("/get_gradesHistory/:id", (req, res) => {
   const id = req.params.id;
   
   const sql = "SELECT g.studentId, g.studentFName, g.studentLName, c.courseName, g.courseCode, " +
- "g.grade FROM stumgmtdb.Grades g INNER JOIN stumgmtdb.Courses c " +
+ "g.grade, g.year FROM stumgmtdb.Grades g INNER JOIN stumgmtdb.Courses c " +
  "on g.courseId = c.idCourses WHERE g.studentId =  ?;";
   const values = [id];
   
