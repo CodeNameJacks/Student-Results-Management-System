@@ -22,6 +22,7 @@ import Register from "./element/Register";
 import CourseHistory from "./element/CourseHistory";
 import GradesHistory from "./element/GradesHistory";
 import GradesList from "./element/GradesList";
+import NavBar from "./element/NavBar";
 function App() {
   //const [ data, setData] = useState("");  KEEP THIS FOR TESTING INITIAL BASE SETUP
   
@@ -33,6 +34,8 @@ function App() {
 
   //add other routes below - see section 6:57
   return (
+    <div>
+   <NavBar/>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>} /> 
@@ -52,6 +55,7 @@ function App() {
         
       </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 
