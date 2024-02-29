@@ -119,11 +119,12 @@ app.get("/get_studentById/:id", (req, res) => {
 app.post('/add_course', (req, res) => {
   count = 0;
   const sqlFind = "COUNT (*) FROM stumgmtdb.Courses where courseCode = ? ";
-  const sql = "INSERT INTO stumgmtdb.Courses (`courseName`, `courseCode`) VALUES (?,?)"; //inser dta into to table and binde 
+  const sql = "INSERT INTO stumgmtdb.Courses (courseName, courseCode, instructor) VALUES (?,?,?)"; //insert data into to table and bind 
   const codeVal = [req.body.courseCode];
   const values = [
     req.body.courseName,
-    req.body.courseCode
+    req.body.courseCode,
+    req.body.instructor
   ]
  
   db.query(sql, values, (err,result)=> {
