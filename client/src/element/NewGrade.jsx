@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import {Link, useNavigate} from 'react-router-dom'
 //import 'bootstrap/dist/css/boorstrap.min.css'
+require('../assets/css/newGrade.css');
 
 function NewGrade() {
     const [values, setValues] = useState({
