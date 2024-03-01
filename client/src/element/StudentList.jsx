@@ -4,6 +4,7 @@ import {Link, useParams} from 'react-router-dom';
 var pencil = require('../assets/fontAwesome/pencil.png');
 var trash = require('../assets/fontAwesome/trash-can2.png');
 var open = require('../assets/fontAwesome/folder-open2.png');
+require('../assets/css/studentList.css');
                                     
 
 
@@ -45,13 +46,17 @@ function StudentList () {
 
     return(
         <div className = "container-fluid vw-100 bg-primary">
+            <div>
+            <h1>Full List of Students</h1><br></br>
+            </div>
+            <div>
             <table>
                 <thead>
                     <tr>
-                        <th>Student Name</th>
-                        <th> DOB</th>
-                        <th>Email</th>
-                        <th></th> 
+                        <th style={{width:'300px'}}>Student Name</th>
+                        <th style={{width:'125px'}}> DOB</th>
+                        <th style={{width:'250px'}}>Email</th>
+                        <th style={{width:'150px'}}></th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -59,20 +64,20 @@ function StudentList () {
                         data.map((student) => {
                             
                             return (<tr>
-                                <td>{student.firstName} {} {student.lastName}</td>
-                                <td> {student.dob}</td>
-                                <td> {student.email}</td>
-                                <td> 
-                                    <Link to={'/Edit/${student.id}'}><img src={pencil}/></Link>
-                                    <Link to={'/OneStudent/${student.id}'}><img src={open}/></Link>
-                                    <span  onClick ={() => handleDelete(student.id)}><img src = {trash}/></span>
+                                <td style={{'padding-left':'15px'}}>{student.firstName} {} {student.lastName}</td>
+                                <td style={{'padding-left':'15px'}}> {student.dob.substring(0,10)}</td>
+                                <td style={{'padding-left':'15px'}}> {student.email}</td>
+                                <td id="links"> 
+                                    <Link className="links" to={`/Edit/${student.id}`}><img src={pencil} style={{width:'20px', height:'20px'}}/></Link> 
+                                    <Link className="links" to={`/ViewStudent/${student.id}`}><img src={open} style={{width:'20px', height:'20px'}}/></Link>
+                                    <span className="links"  onClick ={() => handleDelete(student.id)}><img src = {trash} style={{width:'20px', height:'20px'}}/></span>
                               </td>
                             </tr>)
                         })
                     }                     
                 </tbody>
             </table>
-
+</div>
         </div>
     )
 }
