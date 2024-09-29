@@ -1,0 +1,27 @@
+
+
+.courseHistoryTitle{
+   
+    margin-left: 35.5%;
+    margin-bottom: 1%;
+
+}
+
+.courseInfo{
+    margin-left: 36%;
+}
+
+
+@media screen and (max-width: 1024px) {
+    
+    .courseHistoryTitle{
+        margin-left: 29%;
+        margin-bottom: 2%;
+        
+    }
+
+    .courseInfo{
+        margin-left:30.5%;
+    }
+
+}

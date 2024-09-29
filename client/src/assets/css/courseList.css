@@ -1,18 +1,18 @@
-.studentTable{
+.courseListTable{
+    left      : 15%;
+    margin-top: 5% !important; 
     margin-left: auto !important;
     margin-right: auto !important;
-    top:15% !important;
-    margin-top: 7.5% !important;
-    width: 60%;
-    
+    width: 60% !important;
 }
 
-.studentListTitle{
+
+.courseListTitle{
     text-align: center;
-    margin-bottom: -3%; 
+    margin-top: 3% !important;
 }
 
-.studentTable, th, td {
+table, th, td {
     border: 1px solid !important;
 }
 
@@ -29,11 +29,10 @@ tr:nth-child(even) {
     padding-right: 2% !important;
     
 }
-
 @media screen and (max-width: 1024px) {
-    .studentListTitle{
+    .courseListTitle{
         margin-top: 3% !important;
-        margin-bottom: 1% !important;
+        margin-bottom: 3% !important;
     }
 
 }

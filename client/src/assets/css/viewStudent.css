@@ -1,0 +1,28 @@
+.viewStudentContent{
+    margin-left: 40%;
+    margin-top: 2% !important;
+}
+
+.studentInfo{
+    margin-left: 3%;
+    margin-top: 2%;
+}
+
+.viewStudentTitle{
+   
+    margin-bottom:4%;
+}
+
+.viewStudentButton{
+    margin-top: 5% !important;
+    margin-bottom: 0% !important;
+}
+
+
+@media screen and (max-width: 1024px) {
+    ul{
+    margin-left: 0% !important;
+    
+    }
+
+}

@@ -1,18 +1,18 @@
-.studentTable{
+.gradesHistoryTable{
     margin-left: auto !important;
     margin-right: auto !important;
-    top:15% !important;
-    margin-top: 7.5% !important;
-    width: 60%;
+    margin-top: -5% !important;
     
 }
 
-.studentListTitle{
+
+.gradeHistoryTitle{
     text-align: center;
-    margin-bottom: -3%; 
+    margin-top: 2% !important;
+    
 }
 
-.studentTable, th, td {
+table, th, td {
     border: 1px solid !important;
 }
 
@@ -30,10 +30,3 @@ tr:nth-child(even) {
     
 }
 
-@media screen and (max-width: 1024px) {
-    .studentListTitle{
-        margin-top: 3% !important;
-        margin-bottom: 1% !important;
-    }
-
-}

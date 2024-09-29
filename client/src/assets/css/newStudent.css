@@ -1,14 +1,14 @@
 
 input{
     width: 45%;
+   
 }
-h1{
+.newStudentTitle{
     font-size: 25px !important;
+    float:left !important;
+    
 }
 
-body{
-    display:flex;
-}
 form{
     left      : 25%;
     top       : 15%;
@@ -30,5 +30,11 @@ form{
 #btn{
     margin-right: 20% !important;
     margin-left: 20% !important;
+    margin-top: -5% !important;
 }
 
+@media screen and (max-width: 1024px) {
+    .newStudentTitle{
+        margin-top: -4% !important;
+    }
+}

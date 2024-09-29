@@ -1,18 +1,33 @@
-
-input{
-    width: 45%;
+.editContent{
+    margin-left: 20% !important;
+    margin-right: 20% !important;
+    
 }
-.newCourseTitle{
+
+
+.editTitle{
     font-size: 25px !important;
+    margin-left:24.5% !important;
+    margin-top: 30px;
+    margin-bottom: 15% !important;
+    
+    
 }
 
+.editForm{
+    margin-left: 9%;
+    margin-right: 10%;
+    margin-top: 4% !important;
+}
 
 form{
     left      : 25%;
-    top       : 15%;
-    position  : absolute;   
+    top       : 15% !important;
+    position  : absolute; 
+    
     
 }
+
 .btn {
     text-align: center;
     background-color: black !important;
@@ -28,11 +43,10 @@ form{
 #btn{
     margin-right: 20% !important;
     margin-left: 20% !important;
-    maargin-top: -5% !important;
+    margin-top: -5% !important;
 }
 
-@media screen and (max-width: 1024px) {
-    .newCourseTitle{
-        margin-top: -5% important;
-    }
+.btn-success-2{
+    margin-left: 5%;
 }
+

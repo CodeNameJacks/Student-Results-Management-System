@@ -1,23 +1,19 @@
-.studentTable{
+.gradesTable{ 
+    margin-top: 4% !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    top:15% !important;
-    margin-top: 7.5% !important;
-    width: 60%;
-    
 }
 
-.studentListTitle{
+.gradesListTitle{
     text-align: center;
-    margin-bottom: -3%; 
 }
 
-.studentTable, th, td {
+table, th, td {
     border: 1px solid !important;
 }
 
 th{
-    text-align: center !important;
+    text-align: left !important;
 }
 tr:nth-child(even) { 
     background-color: #F5F5F5; 
@@ -30,10 +26,17 @@ tr:nth-child(even) {
     
 }
 
+
 @media screen and (max-width: 1024px) {
-    .studentListTitle{
-        margin-top: 3% !important;
-        margin-bottom: 1% !important;
+    .gradesListTitle{
+        margin-top: 2% !important;
+        margin-bottom: 6% !important;
+        
+    }
+
+    .gradesListTable{
+        margin-top: 2% !important;
     }
 
 }
+

@@ -1,11 +1,13 @@
+
 img {
     width:40%;
     height:40%;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
     margin-bottom: 3%;
     margin-top: 3%;
+
 
     
     
@@ -16,5 +18,53 @@ p{
     font-size: 32px;
     text-shadow: 0 0 4px black, 0 0 2px yellow;
     text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+       
+       
     
+}
+
+.entryButtons{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+       
+}
+
+button{
+    font-weight:  bold !important;
+    border-radius: 10px !important;
+    background-color: rgb(177, 202, 124);
+    margin-top: 10% !important;
+    margin-bottom: 5% !important;
+    
+}
+
+button a {
+    color: #000000 !important;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 30%;
+    
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
+    flex: 1;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .entryButtons{
+        margin-top: 6% !important;
+    }
+    .entryButtons button{
+       height: 60px !important;
+    }
 }

@@ -35,7 +35,10 @@ function App() {
   //add other routes below - see section 6:57
   return (
     <div>
+      <header>
    <NavBar/>
+   </header>
+   <div>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>} /> 
@@ -55,6 +58,7 @@ function App() {
         
       </Routes>
     </BrowserRouter>
+    </div>
     </div>
   );
 }
