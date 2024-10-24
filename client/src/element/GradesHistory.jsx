@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 require("../assets/css/gradeHistory.css");
 
 function GradesHistory() {
@@ -9,7 +9,7 @@ function GradesHistory() {
 
   useEffect(() => {
     axios
-      .get(`/get_gradesHistory/${id}`)
+      .get( `/get_gradesHistory/${id}`)
       .then((res) => {
         setData(res.data);
       })
@@ -22,7 +22,7 @@ function GradesHistory() {
         <h1 className="gradeHistoryTitle">
           Grades History for Student ID: {id}
         </h1>
-        <h1></h1>
+        
         <div className="container-fluid vw-100 bg-primary">
           <table className="gradesHistoryTable">
             <thead>

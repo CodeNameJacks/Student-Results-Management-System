@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 require("../assets/css/viewStudent.css");
 
 function ViewStudent() {
+  
   const [data, setData] = useState([]);
   const { id } = useParams();
 

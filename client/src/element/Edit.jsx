@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-import NavBar from "../element/NavBar";
+import {useParams } from "react-router-dom";
 require("../assets/css/edit.css");
 
 function Edit() {

@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {Link, useNavigate} from 'react-router-dom'
 //import 'bootstrap/dist/css/boorstrap.min.css'
 require('../assets/css/register.css');
 
@@ -23,7 +22,7 @@ function Register() {
             console.log(res);
         })
         .catch((err) => {
-            alert("The student already exist. 2");
+            alert("The student already exist");
             console.log(err);
         });
     };

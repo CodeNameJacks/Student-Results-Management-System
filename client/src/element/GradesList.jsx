@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 require("../assets/css/gradesList.css");
 
 function GradesList() {
   const [data, setData] = useState([]);
   const { id } = useParams();
   const { courseName } = useParams();
-  const { courseCode } = useParams();
+  //const { courseCode } = useParams();
 
   useEffect(() => {
     //axios.get('/students/$id') - use this line if want to get a specific student by id

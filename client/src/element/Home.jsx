@@ -1,14 +1,13 @@
 import React from "react";
-import NavBar from "../element/NavBar";
 var logo = require("../assets/images/logo.png");
-var list = require("../assets/fontAwesome/list.png");
+//var list = require("../assets/fontAwesome/list.png");
 require("../assets/css/home.css");
 
 function Home() {
   return (
     <>
       <div className="mainLogo">
-        <img src={logo} />
+        <img src={logo}alt=' '/>
         <center>
           <p>Student Management Registration System</p>
         </center>

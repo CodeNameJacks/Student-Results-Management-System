@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 //import 'bootstrap/dist/css/boorstrap.min.css'
 require("../assets/css/newCourse.css");
 
@@ -15,7 +14,7 @@ function NewCourse() {
     e.preventDefault(); //prevent default orm sumission behaviour
 
     axios
-      .post("/add_course", values)
+      .post(`/add_course`, values)
       .then((res) => {
         console.log(res);
       })

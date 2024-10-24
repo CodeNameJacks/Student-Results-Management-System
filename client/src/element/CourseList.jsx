@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 var pencil = require("../assets/fontAwesome/pencil.png");
 var trash = require("../assets/fontAwesome/trash-can2.png");
-var open = require("../assets/fontAwesome/folder-open2.png");
+//var open = require("../assets/fontAwesome/folder-open2.png");
 var list = require("../assets/fontAwesome/list.png");
 require("../assets/css/courseList.css");
 
@@ -74,7 +74,7 @@ function CourseList() {
                     to={`/EditCourse/${course.idCourses}`}
                   >
                     <img
-                      src={pencil}
+                      src={pencil} alt="Edit course info here"
                       style={{ width: "20px", height: "20px" }}
                     />
                   </Link>
@@ -88,14 +88,14 @@ function CourseList() {
                     className="links"
                     to={`/GradesList/${course.idCourses}/${course.courseName}`}
                   >
-                    <img src={list} style={{ width: "20px", height: "20px" }} />
+                    <img src={list} alt="View course info" style={{ width: "20px", height: "20px" }} />
                   </Link>
                   <span
                     className="links"
                     onClick={() => handleDelete(course.idCourses)}
                   >
                     <img
-                      src={trash}
+                      src={trash} alt="Delete course"
                       style={{ width: "20px", height: "20px" }}
                     />
                   </span>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 //import 'bootstrap/dist/css/boorstrap.min.css'
 require("../assets/css/newGrade.css");
 
@@ -19,7 +18,7 @@ function NewGrade() {
     e.preventDefault(); //prevent default orm sumission behaviour
 
     axios
-      .post("/add_grade", values)
+      .post(`/add_grade`, values)
       .then((res) => {
         console.log(res);
       })

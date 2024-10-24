@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 //import 'bootstrap/dist/css/boorstrap.min.css'
 require("../assets/css/newStudent.css");
 
@@ -18,14 +17,14 @@ function NewStudent() {
     e.preventDefault(); //prevent default orm sumission behaviour
 
     axios
-      .post("/add_student", values)
+      .post(`/add_student`, values)
       .then((res) => {
         var mes = JSON.stringify(res.data.message);
         alert(mes);
         console.log(res);
       })
       .catch((err) => {
-        alert("The student already exist. 2");
+        alert("The student already exists.");
         console.log(err);
       });
   }

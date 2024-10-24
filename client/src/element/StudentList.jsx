@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 var pencil = require("../assets/fontAwesome/pencil.png");
 var trash = require("../assets/fontAwesome/trash-can2.png");
 var list = require("../assets/fontAwesome/list.png");
 require("../assets/css/studentList.css");
 
 function StudentList() {
+  const path = process.env.REACT_API_SERVER_URL;
   const [data, setData] = useState([]);
-  let [deleted, setDeleted] = useState(true); //this cause page to reload after deletion and trigger refetch of data
+  let [deleted, setDeleted] = useState(true); //this causes page to reload after deletion and trigger refetch of data
   //const {id } = useParams();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function StudentList() {
         //console.log(JSON.stringify(res.data));
         if (res.data.message) {
           alert(
-            "There was a problem fetching the data. Refreshe the page and try again."
+            "There was a problem fetching the data. Refresh the page and try again."
           );
         }
       })
@@ -75,13 +76,13 @@ function StudentList() {
                   <td id="links">
                     <Link className="links" to={`/Edit/${student.id}`}>
                       <img
-                        src={pencil}
+                        src={pencil} alt="Edit student info here"
                         style={{ width: "20px", height: "20px" }}
                       />
                     </Link>
                     <Link className="links" to={`/ViewStudent/${student.id}`}>
                       <img
-                        src={list}
+                        src={list} alt="View student info here"
                         style={{ width: "20px", height: "20px" }}
                       />
                     </Link>
@@ -90,7 +91,7 @@ function StudentList() {
                       onClick={() => handleDelete(student.id)}
                     >
                       <img
-                        src={trash}
+                        src={trash} alt="Delete student"
                         style={{ width: "20px", height: "20px" }}
                       />
                     </span>
