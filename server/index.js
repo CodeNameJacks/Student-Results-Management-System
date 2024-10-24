@@ -4,7 +4,7 @@ const mysql = require("mysql");
 const path = require('path');
 require("dotenv").config();
 const app = express();
-const PORT = process.env.PORT || 8181;
+const PORT = process.env.PORT || 3200;
 
 app.use(cors());
 app.use(express.json());
@@ -382,7 +382,7 @@ app.get("/api", (req, res) => {
 
 //create listener  
 app.listen(PORT, () => {
-  console.log('Server listening on port 8181');
+  console.log('Server listening on port 3200');
 })
 
 
