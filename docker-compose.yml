@@ -1,0 +1,36 @@
+# Version of Docker-compose
+version: '27.2.0'
+services:
+  # Backend - Add the node-js service
+  server:
+    # Location to the node.js dockerfile
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: node-container
+    ports:
+      # Host port:Container port
+      - '3200:3200'
+      - '14074:14074'
+
+    volumes:
+      # Bind-mounts configuration
+      - ./server:/index
+      # Ignoring any changes made in the "node_modules" folder
+      - /server/node_modules
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  #Frontend - Add the react service
+  client:
+    # Location to the react.js dockerfile
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: react-container
+    ports:
+      # Host port:Container port
+      - '8081:8081'
+
+    stdin_open: true
