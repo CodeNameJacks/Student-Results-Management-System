@@ -1,3 +1,6 @@
+# Student Results Management System
+THis application allows for the adding of course into a system for whcih students can then registers for courses. Grades for courses taken can be entered and then viewed. 
+
 This is a React frontend, Node.js backend, Express.js framework application.
 Node.js version 20.11.0
 Express version 4.18.2
