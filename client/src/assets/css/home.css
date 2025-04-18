@@ -16,7 +16,7 @@ img {
 p{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 32px;
-    text-shadow: 0 0 4px black, 0 0 2px yellow;
+    /*text-shadow: 0 0 4px black, 0 0 2px yellow;*/
     text-align: center;
     margin-left: auto !important;
     margin-right: auto !important;
