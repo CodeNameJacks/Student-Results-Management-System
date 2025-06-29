@@ -30,7 +30,7 @@ function App() {
        .then((data) => setData(data.message));
    }, []);
  */
-  //add other routes below - see section 6:57
+  //add other routes below
   return (
     <div>
       <header>
